@@ -1,8 +1,9 @@
 import React from 'react';
+import HeaderListNotes from "./components/HeaderListNotes";
 
 function App() {
   return (
-    <div>Learn React</div>
+    <HeaderListNotes />
   );
 }
 

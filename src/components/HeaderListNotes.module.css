@@ -1,0 +1,32 @@
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+    padding: 0.5em 0 0.5em 0;
+    color: white;
+    background: darkgray;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.col {
+    flex-grow: 18;
+}
+
+.colIcon {
+    flex-grow: 2;
+}
+
+.colName {
+    flex-grow: 26;
+    text-align: center;
+}
+
+
+
+
