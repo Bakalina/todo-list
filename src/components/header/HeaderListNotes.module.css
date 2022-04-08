@@ -9,7 +9,7 @@
     margin-top: 1em;
     padding: 0.5em 0 0.5em 0;
     color: white;
-    background: darkgray;
+    background: #838383;
     border-radius: 5px;
     font-weight: bold;
 }
@@ -20,13 +20,19 @@
 
 .colIcon {
     flex-grow: 2;
+    display: flex;
+    justify-content: center;
 }
 
-.colName {
-    flex-grow: 26;
-    text-align: center;
+.colLogo {
+    flex-grow: 10;
 }
 
+.colLogo img {
+    max-width: 30px;
+}
 
-
+.colIconPacifier {
+    flex-grow: 5;
+}
 
