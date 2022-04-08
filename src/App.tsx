@@ -1,12 +1,12 @@
 import React from 'react';
 import HeaderListNotes from "./components/header/HeaderListNotes";
-import Note from "./components/note/Note";
+import NoteContainer from "./components/note/NoteContainer";
 
 function App() {
   return (
       <>
         <HeaderListNotes />
-        <Note />
+        <NoteContainer />
       </>
 
   );
