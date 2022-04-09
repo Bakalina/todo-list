@@ -2,21 +2,31 @@ import React from 'react';
 import Note from "./Note";
 import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
+import {NoteType} from "../../types/noteTypes";
 
-export interface propsDataNotes {
-    dataNotes: {};
-    propsData: {}
+type PropsType = {
+    dataNotes: Array<NoteType>
 }
 
-const NoteContainer: propsDataNotes = (props) => {
-    console.log(props.dataNotes)
+const NoteContainer: React.FC<PropsType> = ({dataNotes}) => {
+
+
     return (
-        <Note propsData: propsDataNotes={props}/>
+        <>
+            {dataNotes.map(el => <Note key={el.id}
+                                       createDate={el.createDate}
+                                       date={el.date}
+                                       name={el.name}
+                                       select={el.select}
+                                       selectImage={el.selectImage}
+                                       text={el.text}
+                                       id={el.id}
+                                       active={el.active} />)}
+        </>
     );
 };
 
 
 const mapStateToProps = (state: RootState) => state;
-
 
 export default connect(mapStateToProps)(NoteContainer)

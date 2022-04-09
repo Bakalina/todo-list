@@ -13,10 +13,12 @@
 }
 
 .col {
+    width: 8em;
     flex-grow: 18;
 }
 
 .colIcon {
+    width: 1.5em;
     flex-grow: 2;
     cursor: pointer;
     display: flex;
@@ -24,12 +26,14 @@
 }
 
 .colLogo {
+    width: 4em;
     flex-grow: 6;
     display: flex;
     justify-content: center;
 }
 
 .colName {
+    width: 6em;
     flex-grow: 18;
     font-weight: bold;
 }
