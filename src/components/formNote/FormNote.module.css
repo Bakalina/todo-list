@@ -1,0 +1,14 @@
+
+.container {
+    margin:1em auto 0;
+    width: 1140px;
+}
+
+.container > div {
+    margin-bottom: 1em;
+}
+
+input, select, textarea {
+    width: 25%;
+    margin-top: 0.5em;
+}

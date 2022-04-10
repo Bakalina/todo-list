@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import Button from "./button";
+import Button from "./Button";
 import style from './Button.module.css'
 import {ButtonType} from "../../types/noteTypes";
 
