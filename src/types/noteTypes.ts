@@ -17,3 +17,8 @@ export interface NoteType{
     text: string;
     active: boolean;
 }
+
+export interface ButtonType{
+    name?: string,
+    click?: () => void
+}

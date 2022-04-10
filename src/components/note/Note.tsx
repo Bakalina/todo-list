@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import style from './Note.module.css'
 import archive from "../../image/archive.png";
 import basket from "../../image/basket.png";
@@ -7,7 +7,7 @@ import {NoteType} from "../../types/noteTypes";
 
 
 
-const Note: React.FC<NoteType> = ({ selectImage, name, createDate, select, text,
+const Note: FC<NoteType> = ({ selectImage, name, createDate, select, text,
                                       date }) => {
     return (
         <div className={style.container}>

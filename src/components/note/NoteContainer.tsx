@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Note from "./Note";
 import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
@@ -8,7 +8,7 @@ type PropsType = {
     dataNotes: Array<NoteType>
 }
 
-const NoteContainer: React.FC<PropsType> = ({dataNotes}) => {
+const NoteContainer: FC<PropsType> = ({dataNotes}) => {
 
 
     return (
