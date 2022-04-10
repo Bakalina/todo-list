@@ -27,6 +27,6 @@ const NoteContainer: FC<PropsType> = ({dataNotes}) => {
 };
 
 
-const mapStateToProps = (state: RootState) => state;
+const mapStateToProps = (state: RootState) => state.notesReducers;
 
 export default connect(mapStateToProps)(NoteContainer)

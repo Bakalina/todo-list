@@ -8,7 +8,7 @@ function App() {
     return (
         <>
             <HeaderListNotes />
-            <FormNote />
+            <FormNote/>
             <NoteContainer />
             <ButtonContainer />
         </>

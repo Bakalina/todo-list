@@ -6,9 +6,9 @@ import edit from "../../image/edit.png";
 import {NoteType} from "../../types/noteTypes";
 
 
-
 const Note: FC<NoteType> = ({ selectImage, name, createDate, select, text,
-                                      date }) => {
+                                date }) => {
+
     return (
         <div className={style.container}>
             <div className={style.row}>
