@@ -66,5 +66,4 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({formState, addNewNoteCrea
 
 let mapStateToProps = (state: RootState) => state.formReducers;
 
-
 export default connect(mapStateToProps,{addNewNoteCreator, changeStateFormCreator})(FormNoteContainer);

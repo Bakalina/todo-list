@@ -1,5 +1,6 @@
 export enum NoteActionTypes {
-    ADD_NOTE = 'ADD_NOTE'
+    ADD_NOTE = 'ADD_NOTE',
+    DELETE_NOTE = 'DELETE_NOTE'
 }
 
 export enum FormActionTypes {
@@ -18,8 +19,9 @@ export interface NoteType{
 }
 
 export interface NoteAction {
-    type: NoteActionTypes.ADD_NOTE;
+    type: NoteActionTypes.ADD_NOTE | NoteActionTypes.DELETE_NOTE;
     newNote: NoteType;
+    newDataNotes: Array<NoteType>
 }
 
 export interface FormAction {

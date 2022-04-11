@@ -1,4 +1,4 @@
-import {NoteAction, NoteActionTypes} from "../types/noteTypes";
+import {NoteAction, NoteActionTypes, NoteType} from "../types/noteTypes";
 
 
 const initialState = {
@@ -83,8 +83,14 @@ export  const notesReducers = (state = initialState, action: NoteAction ) => {
                 ...state,
                 dataNotes: [...state.dataNotes ,action.newNote]
             }
+        case NoteActionTypes.DELETE_NOTE:
+            return {
+                ...state,
+                dataNotes: action.newDataNotes
+            }
         default: return state
     }
 }
 export const addNewNoteCreator = (newNote: {}) => ({type: NoteActionTypes.ADD_NOTE, newNote})
 
+export const deleteNoteCreator = (newDataNotes: Array<NoteType>) => ({type: NoteActionTypes.DELETE_NOTE, newDataNotes})

@@ -3,12 +3,19 @@ import Note from "./Note";
 import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
 import {NoteType} from "../../types/noteTypes";
+import {deleteNoteCreator} from "../../redux/notesReducers";
 
 type PropsType = {
-    dataNotes: Array<NoteType>
+    dataNotes: Array<NoteType>,
+    deleteNoteCreator: (newDataNotes: Array<NoteType>) => {},
 }
 
-const NoteContainer: FC<PropsType> = ({dataNotes}) => {
+const NoteContainer: FC<PropsType> = ({dataNotes, deleteNoteCreator}) => {
+
+    const deleteNote = (id: number) => {
+        dataNotes = dataNotes.filter(el => el.id !== id)
+       return  deleteNoteCreator(dataNotes)
+    }
 
     return (
         <>
@@ -20,7 +27,8 @@ const NoteContainer: FC<PropsType> = ({dataNotes}) => {
                                        selectImage={el.selectImage}
                                        text={el.text}
                                        id={el.id}
-                                       active={el.active} />)}
+                                       active={el.active}
+                                       deleteNote={deleteNote}/>)}
         </>
     );
 };
@@ -28,4 +36,4 @@ const NoteContainer: FC<PropsType> = ({dataNotes}) => {
 
 const mapStateToProps = (state: RootState) => state.notesReducers;
 
-export default connect(mapStateToProps)(NoteContainer)
+export default connect(mapStateToProps, {deleteNoteCreator})(NoteContainer)
