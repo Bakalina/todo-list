@@ -13,7 +13,7 @@ type PropsType = {
 }
 
 const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes, deleteNoteCreator, newActiveNotesCreator}) => {
-    console.log(stateActiveNotes)
+
     const deleteNote = (id: number) => {
         dataNotes = dataNotes.filter(el => el.id !== id)
        return  deleteNoteCreator(dataNotes)
@@ -28,7 +28,6 @@ const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes, deleteNoteCr
         })
         return newActiveNotesCreator(dataNotes)
     }
-
 
     return (
         <>
@@ -47,7 +46,6 @@ const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes, deleteNoteCr
         </>
     );
 };
-
 
 const mapStateToProps = (state: RootState) => state.notesReducers;
 

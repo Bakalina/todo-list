@@ -1,0 +1,40 @@
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+    padding: 0.5em 0 0.5em 0;
+    border-radius: 5px;
+}
+
+.rowList {
+    background: #efefef;
+}
+
+.rowHeader {
+    color: white;
+    background: #838383;
+}
+
+.col {
+    width: 16em;
+}
+
+.colLogo {
+    width: 5em;
+    display: flex;
+    justify-content: center;
+}
+
+.colName {
+    width: 16em;
+    font-weight: bold;
+}
+
+.colLogo img {
+    max-width: 20px;
+}
