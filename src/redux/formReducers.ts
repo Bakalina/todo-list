@@ -5,7 +5,7 @@ const initialState = {
     formState: false
 }
 
-export const FormReducers = (state = initialState, action:FormAction ) => {
+export const formReducers = (state = initialState, action:FormAction ) => {
 
         switch (action.type) {
             case FormActionTypes.CHANGE_STATE_FORM:

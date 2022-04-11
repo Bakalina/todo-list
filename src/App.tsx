@@ -2,13 +2,13 @@ import React from 'react';
 import HeaderListNotes from "./components/header/HeaderListNotes";
 import NoteContainer from "./components/note/NoteContainer";
 import ButtonContainer from "./components/buttons/ButtonContainer";
-import FormNote from "./components/formNote/FormNote";
+import FormNoteContainer from "./components/formNote/FormNoteContainer";
 
 function App() {
     return (
         <>
             <HeaderListNotes />
-            <FormNote/>
+            <FormNoteContainer/>
             <NoteContainer />
             <ButtonContainer />
         </>

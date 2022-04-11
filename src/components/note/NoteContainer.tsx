@@ -10,7 +10,6 @@ type PropsType = {
 
 const NoteContainer: FC<PropsType> = ({dataNotes}) => {
 
-
     return (
         <>
             {dataNotes.map(el => <Note key={el.id}

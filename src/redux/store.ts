@@ -1,12 +1,12 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
 import {notesReducers} from "./notesReducers";
-import {FormReducers} from "./formReducers";
+import {formReducers} from "./formReducers";
 
 
 const reducers = combineReducers({
     notesReducers: notesReducers,
-    formReducers: FormReducers
+    formReducers: formReducers
 })
 
 export const store = createStore(reducers, applyMiddleware(thunk));
