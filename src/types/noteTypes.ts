@@ -1,6 +1,9 @@
 export enum NoteActionTypes {
     ADD_NOTE = 'ADD_NOTE',
-    DELETE_NOTE = 'DELETE_NOTE'
+    DELETE_NOTE = 'DELETE_NOTE',
+    CHANGE_ACTIVE_NOTE = 'CHANGE_ACTIVE_NOTE',
+    CHANGE_STATE_ACTIVE_NOTE = 'CHANGE_STATE_ACTIVE_NOTE',
+
 }
 
 export enum FormActionTypes {
@@ -19,9 +22,14 @@ export interface NoteType{
 }
 
 export interface NoteAction {
-    type: NoteActionTypes.ADD_NOTE | NoteActionTypes.DELETE_NOTE;
+    type: NoteActionTypes.ADD_NOTE
+        | NoteActionTypes.DELETE_NOTE
+        | NoteActionTypes.CHANGE_ACTIVE_NOTE
+        | NoteActionTypes.CHANGE_STATE_ACTIVE_NOTE;
     newNote: NoteType;
-    newDataNotes: Array<NoteType>
+    newDataNotes: Array<NoteType>;
+    newStateActive: Array<NoteType>;
+    newStateActiveNotes: boolean
 }
 
 export interface FormAction {

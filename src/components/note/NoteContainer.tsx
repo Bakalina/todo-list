@@ -3,23 +3,37 @@ import Note from "./Note";
 import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
 import {NoteType} from "../../types/noteTypes";
-import {deleteNoteCreator} from "../../redux/notesReducers";
+import {deleteNoteCreator, newActiveNotesCreator} from "../../redux/notesReducers";
 
 type PropsType = {
     dataNotes: Array<NoteType>,
     deleteNoteCreator: (newDataNotes: Array<NoteType>) => {},
+    newActiveNotesCreator: (newDataNotes: Array<NoteType>) => {},
+    stateActiveNotes: boolean
 }
 
-const NoteContainer: FC<PropsType> = ({dataNotes, deleteNoteCreator}) => {
-
+const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes, deleteNoteCreator, newActiveNotesCreator}) => {
+    console.log(stateActiveNotes)
     const deleteNote = (id: number) => {
         dataNotes = dataNotes.filter(el => el.id !== id)
        return  deleteNoteCreator(dataNotes)
     }
 
+    const newStateActive = (id: number) => {
+        dataNotes = dataNotes.map(el => {
+            if (el.id === id) {
+                el.active? el.active = false: el.active = true
+            }
+            return el
+        })
+        return newActiveNotesCreator(dataNotes)
+    }
+
+
     return (
         <>
-            {dataNotes.map(el => <Note key={el.id}
+            {dataNotes.filter(el => el.active === stateActiveNotes)
+                .map(el => <Note key={el.id}
                                        createDate={el.createDate}
                                        date={el.date}
                                        name={el.name}
@@ -28,7 +42,8 @@ const NoteContainer: FC<PropsType> = ({dataNotes, deleteNoteCreator}) => {
                                        text={el.text}
                                        id={el.id}
                                        active={el.active}
-                                       deleteNote={deleteNote}/>)}
+                                       deleteNote={deleteNote}
+                                       newStateActive={newStateActive}/>)}
         </>
     );
 };
@@ -36,4 +51,4 @@ const NoteContainer: FC<PropsType> = ({dataNotes, deleteNoteCreator}) => {
 
 const mapStateToProps = (state: RootState) => state.notesReducers;
 
-export default connect(mapStateToProps, {deleteNoteCreator})(NoteContainer)
+export default connect(mapStateToProps, {deleteNoteCreator, newActiveNotesCreator})(NoteContainer)

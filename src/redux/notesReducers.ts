@@ -73,7 +73,8 @@ const initialState = {
             text: "i need to more sleep :)",
             active: true
         }
-    ]
+    ],
+    stateActiveNotes: true
 }
 
 export  const notesReducers = (state = initialState, action: NoteAction ) => {
@@ -88,9 +89,20 @@ export  const notesReducers = (state = initialState, action: NoteAction ) => {
                 ...state,
                 dataNotes: action.newDataNotes
             }
+        case NoteActionTypes.CHANGE_ACTIVE_NOTE:
+            return {
+                ...state,
+                dataNotes: action.newStateActive
+            }
+        case NoteActionTypes.CHANGE_STATE_ACTIVE_NOTE:
+            return {
+                ...state,
+                stateActiveNotes: action.newStateActiveNotes
+            }
         default: return state
     }
 }
 export const addNewNoteCreator = (newNote: {}) => ({type: NoteActionTypes.ADD_NOTE, newNote})
-
 export const deleteNoteCreator = (newDataNotes: Array<NoteType>) => ({type: NoteActionTypes.DELETE_NOTE, newDataNotes})
+export const newActiveNotesCreator = (newStateActive: Array<NoteType>) => ({type: NoteActionTypes.CHANGE_ACTIVE_NOTE, newStateActive})
+export const newStateActiveNoteCreator = (newStateActiveNotes: boolean) => ({type: NoteActionTypes.CHANGE_STATE_ACTIVE_NOTE, newStateActiveNotes})
