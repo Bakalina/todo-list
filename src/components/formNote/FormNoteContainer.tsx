@@ -16,7 +16,8 @@ interface FormNoteContainerType{
 }
 
 const FormNoteContainer: FC<FormNoteContainerType> = ({ dataNotes,note, formState,
-                                                          addNewNoteCreator, changeStateFormCreator , changeDataNotesCreator}) => {
+                                                          addNewNoteCreator, changeStateFormCreator ,
+                                                          changeDataNotesCreator}) => {
 
     const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
 
@@ -25,8 +26,7 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({ dataNotes,note, formStat
         let name = values.name
         let select = values.select
         let text = values.text
-        // @ts-ignore
-        let selectImage;
+        let selectImage = '';
         switch (select) {
             case 'Task' :
                 selectImage = 'https://cdn-icons-png.flaticon.com/512/1368/1368593.png'
@@ -60,7 +60,6 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({ dataNotes,note, formStat
                     el.name = name
                     el.text = text
                     el.select = select
-                    // @ts-ignore
                     el.selectImage = selectImage
                     el.date = date
                 }
