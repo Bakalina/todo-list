@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import Button from "./Button";
-import style from './Button.module.css'
+import style from './Button.module.css';
 import {ButtonType} from "../../types/noteTypes";
 import {connect} from "react-redux";
 import {changeStateFormCreator, correctNoteCreator} from "../../redux/formReducers";
@@ -13,7 +13,7 @@ interface ButtonContainerType extends ButtonType {
 }
 
 const ButtonContainer: FC<ButtonContainerType> = ({newStateActiveNoteCreator,
-                                                      changeStateFormCreator, correctNoteCreator}) => {
+    changeStateFormCreator, correctNoteCreator}) => {
 
     const createNote = () => {
         const note = {
@@ -25,18 +25,18 @@ const ButtonContainer: FC<ButtonContainerType> = ({newStateActiveNoteCreator,
             selectImage: "",
             text: "",
             active: true
-        }
-        correctNoteCreator(note)
-        changeStateFormCreator(true)
-    }
+        };
+        correctNoteCreator(note);
+        changeStateFormCreator(true);
+    };
 
     const renderActiveNotes = () => {
-        newStateActiveNoteCreator(true)
-    }
+        newStateActiveNoteCreator(true);
+    };
 
     const renderArchiveNotes = () => {
-        newStateActiveNoteCreator(false)
-    }
+        newStateActiveNoteCreator(false);
+    };
 
     return (
         <div className={style.container}>

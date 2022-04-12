@@ -75,34 +75,34 @@ const initialState = {
         }
     ],
     stateActiveNotes: true,
-}
+};
 
-export  const notesReducers = (state = initialState, action: NoteAction ) => {
+export const notesReducers = (state = initialState, action: NoteAction) => {
     switch (action.type) {
-        case NoteActionTypes.ADD_NOTE:
-            return {
-                ...state,
-                dataNotes: [...state.dataNotes ,action.newNote]
-            }
-        case NoteActionTypes.CHANGE_STATE_ACTIVE_NOTE:
-            return {
-                ...state,
-                stateActiveNotes: action.newStateActiveNotes
-            }
-        case NoteActionTypes.CHANGE_DATA_NOTES:
-            return {
-                ...state,
-                dataNotes: action.newDataNotes
-            }
-        default: return state
+    case NoteActionTypes.ADD_NOTE:
+        return {
+            ...state,
+            dataNotes: [...state.dataNotes ,action.newNote]
+        };
+    case NoteActionTypes.CHANGE_STATE_ACTIVE_NOTE:
+        return {
+            ...state,
+            stateActiveNotes: action.newStateActiveNotes
+        };
+    case NoteActionTypes.CHANGE_DATA_NOTES:
+        return {
+            ...state,
+            dataNotes: action.newDataNotes
+        };
+    default: return state;
     }
-}
+};
 
 export const addNewNoteCreator = (newNote: {}) =>
-    ({type: NoteActionTypes.ADD_NOTE, newNote})
+    ({type: NoteActionTypes.ADD_NOTE, newNote});
 
 export const newStateActiveNoteCreator = (newStateActiveNotes: boolean) =>
-    ({type: NoteActionTypes.CHANGE_STATE_ACTIVE_NOTE, newStateActiveNotes})
+    ({type: NoteActionTypes.CHANGE_STATE_ACTIVE_NOTE, newStateActiveNotes});
 
 export const changeDataNotesCreator = (newDataNotes: Array<NoteType>) =>
-    ({type: NoteActionTypes.CHANGE_DATA_NOTES, newDataNotes})
+    ({type: NoteActionTypes.CHANGE_DATA_NOTES, newDataNotes});

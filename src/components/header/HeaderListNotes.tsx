@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './HeaderListNotes.module.css';
-import basket from '../../image/basket.png'
-import archive from '../../image/archive.png'
+import basket from '../../image/basket.png';
+import archive from '../../image/archive.png';
 
 
 const HeaderListNotes = () => {

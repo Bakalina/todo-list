@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
-import style from './StatisticList.module.css'
+import style from './StatisticList.module.css';
 import {StatisticListType} from "../../types/noteTypes";
 
 
 const StatisticList: FC<StatisticListType> = ({logo, name, active,
-                                                  archive,styleRow}) => {
+    archive,styleRow}) => {
     return (
         <div className={style.container}>
             <div className={`${style.row} ${styleRow}`}>

@@ -12,7 +12,7 @@ type FormNoteType = {
 }
 
 const FormNote: FC<FormNoteType> = ({submit, name= '', text= '',
-                                        select= '', date= '' }) => {
+    select= '', date= '' }) => {
 
     return (
         <div>

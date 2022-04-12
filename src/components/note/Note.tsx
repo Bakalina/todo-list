@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import style from './Note.module.css'
+import style from './Note.module.css';
 import archive from "../../image/archive.png";
 import basket from "../../image/basket.png";
 import edit from "../../image/edit.png";
@@ -12,7 +12,7 @@ interface Note extends NoteType {
 }
 
 const Note: FC<Note> = ({ selectImage, name, createDate, select, text,
-                                date,id,deleteNote, newStateActive, correctNote}) => {
+    date,id,deleteNote, newStateActive, correctNote}) => {
 
     return (
         <div className={style.container}>
