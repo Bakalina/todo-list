@@ -8,10 +8,11 @@ import {NoteType} from "../../types/noteTypes";
 interface Note extends NoteType {
     deleteNote: (id: number) => void
     newStateActive: (id: number) => void
+    correctNote: (id: number) => void
 }
 
 const Note: FC<Note> = ({ selectImage, name, createDate, select, text,
-                                date,id,deleteNote, newStateActive}) => {
+                                date,id,deleteNote, newStateActive, correctNote}) => {
 
     return (
         <div className={style.container}>
@@ -22,7 +23,7 @@ const Note: FC<Note> = ({ selectImage, name, createDate, select, text,
                 <div className={style.col}>{select}</div>
                 <div className={style.col}>{text}</div>
                 <div className={style.col}>{date}</div>
-                <div className={style.colIcon}><img alt='edit' src={edit}/></div>
+                <div className={style.colIcon} onClick={()=>correctNote(id)}><img alt='edit' src={edit}/></div>
                 <div className={style.colIcon} onClick={()=>newStateActive(id)}><img alt='archive' src={archive}/></div>
                 <div className={style.colIcon} onClick={()=>deleteNote(id)}><img alt='basket' src={basket}/></div>
             </div>

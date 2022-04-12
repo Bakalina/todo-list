@@ -4,19 +4,24 @@ import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
 import {NoteType} from "../../types/noteTypes";
 import {deleteNoteCreator, newActiveNotesCreator} from "../../redux/notesReducers";
+import {changeStateFormCreator, correctNoteCreator} from "../../redux/formReducers";
 
 type PropsType = {
     dataNotes: Array<NoteType>,
-    deleteNoteCreator: (newDataNotes: Array<NoteType>) => {},
-    newActiveNotesCreator: (newDataNotes: Array<NoteType>) => {},
-    stateActiveNotes: boolean
+    stateActiveNotes: boolean,
+    deleteNoteCreator: (newDataNotes: Array<NoteType>) => void ,
+    newActiveNotesCreator: (newDataNotes: Array<NoteType>) => void,
+    correctNoteCreator: (note: {}) => void,
+    changeStateFormCreator: (formState: boolean) => void
 }
 
-const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes, deleteNoteCreator, newActiveNotesCreator}) => {
+const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes,
+                                          deleteNoteCreator, newActiveNotesCreator,
+                                          correctNoteCreator, changeStateFormCreator}) => {
 
     const deleteNote = (id: number) => {
         dataNotes = dataNotes.filter(el => el.id !== id)
-       return  deleteNoteCreator(dataNotes)
+        deleteNoteCreator(dataNotes)
     }
 
     const newStateActive = (id: number) => {
@@ -26,7 +31,14 @@ const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes, deleteNoteCr
             }
             return el
         })
-        return newActiveNotesCreator(dataNotes)
+        newActiveNotesCreator(dataNotes)
+    }
+
+    const correctNote = (id: number) => {
+        dataNotes.forEach(el => {
+            if (el.id === id) correctNoteCreator(el)
+        } )
+        changeStateFormCreator(true)
     }
 
     return (
@@ -42,11 +54,15 @@ const NoteContainer: FC<PropsType> = ({stateActiveNotes, dataNotes, deleteNoteCr
                                        id={el.id}
                                        active={el.active}
                                        deleteNote={deleteNote}
-                                       newStateActive={newStateActive}/>)}
+                                       newStateActive={newStateActive}
+                                       correctNote={correctNote}
+                />)}
         </>
     );
 };
 
 const mapStateToProps = (state: RootState) => state.notesReducers;
 
-export default connect(mapStateToProps, {deleteNoteCreator, newActiveNotesCreator})(NoteContainer)
+export default connect(mapStateToProps,
+    {deleteNoteCreator, newActiveNotesCreator, correctNoteCreator, changeStateFormCreator})
+(NoteContainer)

@@ -5,14 +5,19 @@ import {FormType} from "../../types/noteTypes";
 
 type FormNoteType = {
     submit: (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => void
+    name?: string,
+    text?: string,
+    select?: string,
+    date?: string
 }
 
-const FormNote: FC<FormNoteType> = ({submit}) => {
+const FormNote: FC<FormNoteType> = ({submit, name= '', text= '',
+                                        select= '', date= '' }) => {
 
     return (
         <div>
             <Formik
-                initialValues={{name: '', text: '', select: '', date: ''}}
+                initialValues={{name: name, text: text, select: select, date: date}}
                 onSubmit={submit}>
 
                 {({isSubmitting}) => (

@@ -1,19 +1,22 @@
 import React, {FC} from 'react';
-import {FormType} from "../../types/noteTypes";
+import {FormType, NoteType} from "../../types/noteTypes";
 import {connect} from "react-redux";
-import {addNewNoteCreator} from "../../redux/notesReducers";
+import {addNewNoteCreator, changeDataNotesCreator} from "../../redux/notesReducers";
 import {changeStateFormCreator} from "../../redux/formReducers";
 import {RootState} from "../../redux/store";
 import FormNote from "./FormNote";
 
-type FormNoteContainerType = {
-    formState: boolean,
-    addNewNoteCreator: ({}) => void,
-    changeStateFormCreator: (arg0: boolean) => void
+interface FormNoteContainerType{
+    note: NoteType;
+    formState: boolean;
+    addNewNoteCreator: (newNote: {}) => void;
+    changeStateFormCreator: (arg0: boolean) => void;
+    dataNotes: Array<NoteType>
+    changeDataNotesCreator : (newDataNotes: Array<NoteType>) => void
 }
 
-const FormNoteContainer: FC<FormNoteContainerType> = ({formState, addNewNoteCreator, changeStateFormCreator}) => {
-
+const FormNoteContainer: FC<FormNoteContainerType> = ({ dataNotes,note, formState,
+                                                          addNewNoteCreator, changeStateFormCreator , changeDataNotesCreator}) => {
 
     const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
 
@@ -22,6 +25,7 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({formState, addNewNoteCrea
         let name = values.name
         let select = values.select
         let text = values.text
+        // @ts-ignore
         let selectImage;
         switch (select) {
             case 'Task' :
@@ -38,32 +42,57 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({formState, addNewNoteCrea
                 break;
         }
 
-        let note = {
-            id: Date.now(),
-            name: name,
-            select: select,
-            selectImage: selectImage,
-            text: text,
-            date: date,
-            createDate: createDate.toISOString().split('T')[0],
-            active: true
+        if (note.id === 0) {
+            const newNote = {
+                id: Date.now(),
+                name: name,
+                select: select,
+                selectImage: selectImage,
+                text: text,
+                date: date,
+                createDate: createDate.toISOString().split('T')[0],
+                active: true
+            }
+            addNewNoteCreator(newNote)
+        } else {
+            let newDataNotes = dataNotes.map(el => {
+                if (el.id === note.id) {
+                    el.name = name
+                    el.text = text
+                    el.select = select
+                    // @ts-ignore
+                    el.selectImage = selectImage
+                    el.date = date
+                }
+                return el
+            })
+
+            changeDataNotesCreator(newDataNotes)
         }
 
-        addNewNoteCreator(note)
-        setSubmitting(false);
         changeStateFormCreator(false)
+        setSubmitting(false);
     }
 
 
     if (formState) {
-        return (
-            <FormNote submit={submit}/>
-        );
+        return note.id === 0 ? <FormNote submit={submit}/> : <FormNote submit={submit}
+                                                                       name={note.name}
+                                                                       text={note.text}
+                                                                       select={note.select}
+                                                                       date={note.date}/> ;
     } else {
         return <div>{}</div>
     }
 };
 
-let mapStateToProps = (state: RootState) => state.formReducers;
+const mapStateToProps = (state: RootState) => {
+    return {
+        formState: state.formReducers.formState,
+        note: state.formReducers.note,
+        dataNotes: state.notesReducers.dataNotes
+    }
+}
 
-export default connect(mapStateToProps,{addNewNoteCreator, changeStateFormCreator})(FormNoteContainer);
+
+export default connect(mapStateToProps,{addNewNoteCreator, changeStateFormCreator, changeDataNotesCreator})(FormNoteContainer);
