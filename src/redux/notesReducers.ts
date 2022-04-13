@@ -49,7 +49,7 @@ const initialState = {
             id: 1649103312992,
             name: "book",
             select: "Quote",
-            selectImage: 'https://cdn-icons.flaticon.com/png/512/4338/premium/4338294.png?token=exp=1649615808~hmac=c62b0537a6962d2c73b4628ef55fb263',
+            selectImage: 'https://cdn-icons-png.flaticon.com/512/206/206059.png',
             text: "Sleep is good, he said, and books are better.",
             active: true
         },
@@ -59,7 +59,7 @@ const initialState = {
             id: 1649103387474,
             name: "food",
             select: "Random Thought",
-            selectImage: 'https://cdn-icons.flaticon.com/png/512/2263/premium/2263511.png?token=exp=1649615852~hmac=3c74f075b08b17351f0b38507ad58cf0',
+            selectImage: 'https://cdn-icons-png.flaticon.com/512/7268/7268079.png',
             text: "I want to eat",
             active: true
         },
@@ -69,7 +69,7 @@ const initialState = {
             id: 1649103547264,
             name: "sleep",
             select: "Random Thought",
-            selectImage: 'https://cdn-icons.flaticon.com/png/512/2263/premium/2263511.png?token=exp=1649615852~hmac=3c74f075b08b17351f0b38507ad58cf0',
+            selectImage: 'https://cdn-icons-png.flaticon.com/512/7268/7268079.png',
             text: "i need to more sleep :)",
             active: true
         }

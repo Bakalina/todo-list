@@ -29,10 +29,10 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({ dataNotes,note, formStat
             selectImage = 'https://cdn-icons-png.flaticon.com/512/841/841743.png';
             break;
         case 'Quote' :
-            selectImage = 'https://cdn-icons.flaticon.com/png/512/4338/premium/4338294.png?token=exp=1649615808~hmac=c62b0537a6962d2c73b4628ef55fb263';
+            selectImage = 'https://cdn-icons-png.flaticon.com/512/206/206059.png';
             break;
         case 'Random Thought' :
-            selectImage = 'https://cdn-icons.flaticon.com/png/512/2263/premium/2263511.png?token=exp=1649615852~hmac=3c74f075b08b17351f0b38507ad58cf0';
+            selectImage = 'https://cdn-icons-png.flaticon.com/512/7268/7268079.png';
             break;
         }
         return selectImage;
