@@ -1,4 +1,4 @@
-import {FormAction, FormActionTypes} from "../types/noteTypes";
+import {FormAction, FormActionTypes, NoteType} from "../types/noteTypes";
 
 
 const initialState = {
@@ -32,4 +32,4 @@ export const formReducers = (state = initialState, action:FormAction) => {
 };
 
 export const changeStateFormCreator = (formState: boolean) => ({type: FormActionTypes.CHANGE_STATE_FORM, formState});
-export const correctNoteCreator = (note: {}) => ({type: FormActionTypes.CORRECT_NOTE, note});
+export const correctNoteCreator = (note: NoteType) => ({type: FormActionTypes.CORRECT_NOTE, note});

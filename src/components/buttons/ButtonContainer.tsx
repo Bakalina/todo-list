@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import Button from "./Button";
 import style from './Button.module.css';
-import {ButtonType} from "../../types/noteTypes";
+import {ButtonType, NoteType} from "../../types/noteTypes";
 import {connect} from "react-redux";
 import {changeStateFormCreator, correctNoteCreator} from "../../redux/formReducers";
 import {newStateActiveNoteCreator} from "../../redux/notesReducers";
@@ -9,7 +9,7 @@ import {newStateActiveNoteCreator} from "../../redux/notesReducers";
 interface ButtonContainerType extends ButtonType {
     newStateActiveNoteCreator: (newStateActiveNotes: boolean) => void;
     changeStateFormCreator: (formState: boolean) => void
-    correctNoteCreator: (note: {}) => void,
+    correctNoteCreator: (note: NoteType) => void,
 }
 
 const ButtonContainer: FC<ButtonContainerType> = ({newStateActiveNoteCreator,

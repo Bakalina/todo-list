@@ -98,7 +98,7 @@ export const notesReducers = (state = initialState, action: NoteAction) => {
     }
 };
 
-export const addNewNoteCreator = (newNote: {}) =>
+export const addNewNoteCreator = (newNote: NoteType) =>
     ({type: NoteActionTypes.ADD_NOTE, newNote});
 
 export const newStateActiveNoteCreator = (newStateActiveNotes: boolean) =>

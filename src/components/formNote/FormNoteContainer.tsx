@@ -9,7 +9,7 @@ import FormNote from "./FormNote";
 interface FormNoteContainerType{
     note: NoteType;
     formState: boolean;
-    addNewNoteCreator: (newNote: {}) => void;
+    addNewNoteCreator: (newNote: NoteType) => void;
     changeStateFormCreator: (arg0: boolean) => void;
     dataNotes: Array<NoteType>
     changeDataNotesCreator : (newDataNotes: Array<NoteType>) => void
@@ -19,13 +19,7 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({ dataNotes,note, formStat
     addNewNoteCreator, changeStateFormCreator ,
     changeDataNotesCreator}) => {
 
-    const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
-
-        const date = values.date;
-        const createDate = new Date;
-        const name = values.name;
-        const select = values.select;
-        const text = values.text;
+    const addSelectImage = (select: string) => {
         let selectImage = '';
         switch (select) {
         case 'Task' :
@@ -41,6 +35,18 @@ const FormNoteContainer: FC<FormNoteContainerType> = ({ dataNotes,note, formStat
             selectImage = 'https://cdn-icons.flaticon.com/png/512/2263/premium/2263511.png?token=exp=1649615852~hmac=3c74f075b08b17351f0b38507ad58cf0';
             break;
         }
+        return selectImage;
+    };
+
+    const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
+
+        const date = values.date;
+        const createDate = new Date;
+        const name = values.name;
+        const select = values.select;
+        const text = values.text;
+        const selectImage = addSelectImage(select);
+
 
         if (note.id === 0) {
             const newNote = {
@@ -94,4 +100,5 @@ const mapStateToProps = (state: RootState) => {
 };
 
 
-export default connect(mapStateToProps,{addNewNoteCreator, changeStateFormCreator, changeDataNotesCreator})(FormNoteContainer);
+export default connect(mapStateToProps,
+    {addNewNoteCreator, changeStateFormCreator, changeDataNotesCreator})(FormNoteContainer);

@@ -10,7 +10,7 @@ type PropsType = {
     dataNotes: Array<NoteType>,
     stateActiveNotes: boolean,
     changeDataNotesCreator: (newDataNotes: Array<NoteType>) => void ,
-    correctNoteCreator: (note: {}) => void,
+    correctNoteCreator: (note: NoteType) => void,
     changeStateFormCreator: (formState: boolean) => void
 }
 
