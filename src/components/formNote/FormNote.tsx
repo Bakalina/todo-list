@@ -22,30 +22,32 @@ const FormNote: FC<FormNoteType> = ({submit, name= '', text= '',
 
                 {({isSubmitting}) => (
                     <Form className={style.container}>
-                        <div>
-                            <div>Name:</div>
-                            <Field required type="text" name="name"/>
+                        <div className={style.row}>
+                            <div>
+                                <div>Name:</div>
+                                <Field required type="text" name="name"/>
+                            </div>
+                            <div>
+                                <div>Category:</div>
+                                <Field required name="select" as="select">
+                                    <option value="" disabled hidden>Select a category</option>
+                                    <option value="Task">Task</option>
+                                    <option value="Idea">Idea</option>
+                                    <option value="Quote">Quote</option>
+                                    <option value="Random Thought">Random Thought</option>
+                                </Field>
+                            </div>
+                            <div>
+                                <div>Text:</div>
+                                <Field required component="textarea" name="text"/>
+                            </div>
+                            <div>
+                                <div>Date:</div>
+                                <Field type="date" name="date"/>
+                            </div>
                         </div>
-                        <div>
-                            <div>Category:</div>
-                            <Field required name="select" as="select">
-                                <option value="" disabled hidden>Select a category</option>
-                                <option value="Task">Task</option>
-                                <option value="Idea">Idea</option>
-                                <option value="Quote">Quote</option>
-                                <option value="Random Thought">Random Thought</option>
-                            </Field>
-                        </div>
-                        <div>
-                            <div>Text:</div>
-                            <Field required component="textarea" name="text"/>
-                        </div>
-                        <div>
-                            <div>Date:</div>
-                            <Field type="date" name="date"/>
-                        </div>
-                        <div>
-                            <button type="submit" disabled={isSubmitting}>Save Note</button>
+                        <div className={style.containerButton}>
+                            <button className={style.button} type="submit" disabled={isSubmitting}>Save Note</button>
                         </div>
                     </Form>
                 )}

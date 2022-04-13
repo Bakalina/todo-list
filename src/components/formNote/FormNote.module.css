@@ -2,13 +2,39 @@
 .container {
     margin:1em auto 0;
     width: 1140px;
+    background: #efefef;
+    border-radius: 5px;
 }
 
-.container > div {
-    margin-bottom: 1em;
+.row > div {
+    margin: 1em;
 }
 
 input, select, textarea {
-    width: 25%;
+    width: 19em;
     margin-top: 0.5em;
+    border-radius: 5px;
+    border: 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.containerButton {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    height: 2em;
+    width: 80%;
+    margin-bottom: 1em;
+    background: #838383;
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    cursor: pointer;
 }
